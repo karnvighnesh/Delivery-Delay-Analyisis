@@ -1,0 +1,63 @@
+📦 Project: Delivery Delay & Efficiency Analysis
+
+📊 Key Metrics:
+- Avg FTL Delay: 5.0 hrs
+- Avg Carting Delay: 1.0 hrs
+- FTL Trips: 100,000
+- Carting Trips: 50,000
+- Weighted Avg Delay: 3.67 hrs
+
+🔍 Insights:
+• FTL contributes more to delay due to higher avg and volume.
+• Delay peaks in Afternoon and Evening; lowest in Morning and Late Night.
+• FTL delay max in Afternoon (5.38 hrs); Carting max in Morning (0.97 hrs).
+• FTL is 88% slower vs. expected; Carting is 131% slower.
+• FTL efficiency = 51.75%, Carting = 43.11% → optimization needed.
+• Delay increases with distance: 500+ km = 12.41 hrs, 0–50 km = 0.54 hrs.
+• Thursday sees max trips (~26.7k); Monday lowest (~17.8k).
+
+🧮 Scenario Planning:
+| Scenario        | FTL | Carting | Overall |
+|-----------------|-----|---------|---------|
+| Base Case       | 5.0 | 1.0     | 3.67    |
+| Optimistic      | 2.0 | 0.5     | 1.5     |
+| Worst Case      | 7.0 | 2.0     | 5.33    |
+| SLA Pressure    | 2.5 | 1.4     | 2.13    |
+
+✅ Recommendations:
+• Prioritize reducing FTL delay in afternoons.
+• Fix inefficiencies in routing vs. OSRM benchmarks.
+• Spread load better across weekdays.
+• Use scenario models to plan ops and manage SLAs.
+
+---
+
+📘 **Data Dictionary for Better Understanding**
+
+
+• data - tells whether the data is testing or training data
+• trip_creation_time – Timestamp of trip creation
+• route_schedule_uuid – Unique Id for a particular route schedule
+• route_type – Transportation type
+• FTL – Full Truck Load: FTL shipments get to the destination sooner, as the truck is making no other pickups or drop-offs along the way
+• Carting: Handling system consisting of small vehicles (carts)
+• trip_uuid - Unique ID given to a particular trip (A trip may include different source and destination centers)
+• source_center - Source ID of trip origin
+• source_name - Source Name of trip origin
+• destination_cente – Destination ID
+• destination_name – Destination Name
+• od_start_time – Trip start time
+• od_end_time – Trip end time
+• start_scan_to_end_scan – Time taken to deliver from source to destination
+• is_cutoff – Unknown field
+• cutoff_factor – Unknown field
+• cutoff_timestamp – Unknown field
+• actual_distance_to_destination – Distance in Kms between source and destination warehouse
+• actual_time – Actual time taken to complete the delivery (Cumulative)
+• osrm_time – An open-source routing engine time calculator which computes the shortest path between points in a given map (Includes usual traffic, distance through major and minor roads) and gives the time (Cumulative)
+• osrm_distance – An open-source routing engine which computes the shortest path between points in a given map (Includes usual traffic, distance through major and minor roads) (Cumulative)
+• factor – Unknown field
+• segment_actual_time – This is a segment time. Time taken by the subset of the package delivery
+• segment_osrm_time – This is the OSRM segment time. Time taken by the subset of the package delivery
+• segment_osrm_distance – This is the OSRM distance. Distance covered by subset of the package delivery
+• segment_factor – Unknown field
